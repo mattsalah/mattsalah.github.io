@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matt Salah — PhD Student, Columbia University</title>
+  <title>Matthew Salah — PhD Student, Columbia University</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -20,7 +20,7 @@
       --text: #2a2a2a;
       --text-muted: #666;
       --rule: #d4cfc4;
-      --sidebar-w: 260px;
+      --sidebar-w: 220px;
     }
 
     html { scroll-behavior: smooth; }
@@ -58,6 +58,14 @@
       color: var(--gold-light);
       letter-spacing: 0.02em;
       flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .sidebar-portrait img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
     }
 
     .sidebar-name {
@@ -130,7 +138,7 @@
       margin-left: var(--sidebar-w);
       flex: 1;
       padding: 64px 72px 80px 72px;
-      max-width: 860px;
+      max-width: 1400px;
     }
 
     /* ── SECTION ── */
@@ -286,6 +294,13 @@
       color: var(--navy);
       margin-bottom: 4px;
     }
+    .pub-title-link {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .pub-title-link:hover { border-color: var(--gold); }
 
     .pub-authors {
       font-size: 0.85rem;
@@ -393,9 +408,11 @@
 
   <!-- SIDEBAR -->
   <aside>
-    <div class="sidebar-portrait">MS</div>
+    <div class="sidebar-portrait">
+      <img src="headshot.jpeg" alt="Matthew Salah" />
+    </div>
     <div>
-      <div class="sidebar-name">Matt Salah</div>
+      <div class="sidebar-name">Matthew Salah</div>
       <div class="sidebar-title">PhD Student</div>
       <div class="sidebar-uni">Columbia University</div>
     </div>
@@ -406,8 +423,9 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="sidebar-contact">
-      <a href="mailto:mjs2460@columbia.edu">mjs2460@columbia.edu</a>
-      <a href="https://sipa.columbia.edu" target="_blank">Columbia SIPA</a>
+      <a href="mailto:m.salah@columbia.edu">m.salah@columbia.edu</a>
+      <a href="https://www.sipa.columbia.edu/sipa-education/phd-sustainable-development" target="_blank">Columbia SIPA</a>
+      <a href="https://scholar.google.com/citations?hl=en&user=34V39l8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
     </div>
   </aside>
 
@@ -482,15 +500,15 @@
       </div>
 
         <div class="pub-item">
-        <div class="pub-title">The ecological currency hierarchy: empirical support for currency power driven asymmetries in environmental and social autonomy</div>
-        <div class="pub-authors">Matthew Salah, Joe Ament</div>
-        <div class="pub-venue">New Political Economy 30 (1), 77–99 (2025)</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title">When do established powers support rising powers’ multilateral institutions? The case of the Asian Development Bank</div>
-        <div class="pub-authors">Ayse Kaya, Matthew Salah</div>
-        <div class="pub-venue">The Chinese Journal of International Politics 15 (1), 1–26 (2022)</div>
-      </div>
+          <div class="pub-title"><a href="https://www.tandfonline.com/doi/full/10.1080/13563467.2024.2389511" class="pub-title-link">The ecological currency hierarchy: empirical support for currency power driven asymmetries in environmental and social autonomy</a></div>
+          <div class="pub-authors">Matthew Salah, Joe Ament</div>
+          <div class="pub-venue">New Political Economy 30 (1), 77–99 (2025)</div>
+        </div>
+        <div class="pub-item">
+          <div class="pub-title"><a href="https://academic.oup.com/cjip/article-abstract/15/1/1/6542910" class="pub-title-link">When do established powers support rising powers’ multilateral institutions? The case of the Asian Development Bank</a></div>
+          <div class="pub-authors">Ayse Kaya, Matthew Salah</div>
+          <div class="pub-venue">The Chinese Journal of International Politics 15 (1), 1–26 (2022)</div>
+        </div>
     </section>
 
     <!-- CONTACT -->
@@ -504,7 +522,7 @@
         <div class="contact-card">
           <div class="contact-label">Email</div>
           <div class="contact-value">
-            <a href="mailto:mjs2460@columbia.edu">mjs2460@columbia.edu</a>
+            <a href="mailto:m.salah@columbia.edu">m.salah@columbia.edu</a>
           </div>
         </div>
         <div class="contact-card">
@@ -522,7 +540,7 @@
     </section>
 
     <footer>
-      &copy; 2026 Matt Salah &nbsp;·&nbsp; Columbia University
+      &copy; 2026 Matthew Salah &nbsp;·&nbsp; Columbia University
     </footer>
 
   </main>
