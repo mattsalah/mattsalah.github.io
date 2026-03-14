@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matt Salah — PhD Student, Columbia University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --navy-mid: #2c3e6b;
+      --gold: #b8960c;
+      --gold-light: #d4af37;
+      --cream: #faf8f3;
+      --warm-white: #f5f2ea;
+      --text: #2a2a2a;
+      --text-muted: #666;
+      --rule: #d4cfc4;
+      --sidebar-w: 260px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* ── SIDEBAR ── */
+    aside {
+      width: var(--sidebar-w);
+      min-height: 100vh;
+      background: var(--navy);
+      position: fixed;
+      top: 0; left: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 48px 28px;
+      z-index: 100;
+    }
+
+    .sidebar-portrait {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      background: var(--navy-mid);
+      border: 3px solid var(--gold);
+      margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'EB Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--gold-light);
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+
+    .sidebar-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-title {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .sidebar-uni {
+      font-size: 0.78rem;
+      color: var(--gold-light);
+      letter-spacing: 0.04em;
+      margin-bottom: 32px;
+    }
+
+    .sidebar-rule {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin-bottom: 28px;
+    }
+
+    nav { flex: 1; }
+
+    nav a {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--gold-light); }
+    nav a:last-child { border-bottom: none; }
+
+    .sidebar-contact {
+      margin-top: auto;
+      padding-top: 32px;
+    }
+    .sidebar-contact a {
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      margin-bottom: 6px;
+      transition: color 0.2s;
+      word-break: break-all;
+    }
+    .sidebar-contact a:hover { color: var(--gold-light); }
+
+    /* ── MAIN ── */
+    main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 64px 72px 80px 72px;
+      max-width: 860px;
+    }
+
+    /* ── SECTION ── */
+    section {
+      margin-bottom: 64px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.55s ease forwards;
+    }
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .section-label {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── ABOUT ── */
+    .about-intro {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--navy-mid);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      padding-left: 16px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .about-body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--warm-white);
+      border: 1px solid var(--rule);
+      padding: 5px 12px;
+      border-radius: 2px;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 4px 1fr;
+      gap: 0 20px;
+      padding-bottom: 24px;
+      position: relative;
+    }
+
+    .edu-item::before {
+      content: '';
+      grid-row: 1 / 10;
+      width: 4px;
+      background: var(--rule);
+      border-radius: 2px;
+    }
+
+    .edu-item:last-child { padding-bottom: 0; }
+
+    .edu-dot {
+      position: absolute;
+      left: 0; top: 4px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--cream);
+      transform: translateX(-4px);
+    }
+
+    .edu-degree {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .edu-school {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .edu-detail {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-empty {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-muted);
+      padding: 20px 0;
+    }
+
+    .pub-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pub-item:first-child { border-top: 1px solid var(--rule); }
+
+    .pub-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .pub-authors {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .pub-venue {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .pub-links { margin-top: 8px; display: flex; gap: 12px; }
+    .pub-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .pub-link:hover { border-color: var(--gold); }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .contact-card {
+      background: var(--warm-white);
+      border: 1px solid var(--rule);
+      padding: 24px;
+      border-radius: 2px;
+    }
+
+    .contact-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .contact-value {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+
+    .contact-value a {
+      color: var(--navy);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.2s;
+    }
+    .contact-value a:hover { border-color: var(--navy); }
+
+    .contact-note {
+      margin-top: 28px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      aside {
+        width: 100%;
+        min-height: auto;
+        position: relative;
+        padding: 32px 24px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+      }
+      .sidebar-portrait { margin-bottom: 0; width: 64px; height: 64px; font-size: 1.5rem; }
+      .sidebar-name { font-size: 1.1rem; }
+      .sidebar-rule, .sidebar-contact { display: none; }
+      nav { width: 100%; display: flex; flex-wrap: wrap; gap: 4px; }
+      nav a { border: none; padding: 4px 10px; background: rgba(255,255,255,0.07); border-radius: 2px; font-size: 0.75rem; }
+      body { flex-direction: column; }
+      main { margin-left: 0; padding: 40px 24px; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="sidebar-portrait">MS</div>
+    <div>
+      <div class="sidebar-name">Matt Salah</div>
+      <div class="sidebar-title">PhD Student</div>
+      <div class="sidebar-uni">Columbia University</div>
+    </div>
+    <div class="sidebar-rule"></div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="sidebar-contact">
+      <a href="mailto:mjs2460@columbia.edu">mjs2460@columbia.edu</a>
+      <a href="https://sipa.columbia.edu" target="_blank">Columbia SIPA</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-label">About</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <p class="about-intro">
+        Researching the international monetary system, sustainable finance, and North-South trade imbalances.
+      </p>
+
+      <p class="about-body">
+        Matt (he/him) is a first-year PhD candidate in Sustainable Development at Columbia SIPA. His research interests surround the international monetary system, the financing of the sustainable transition, and North-South trade imbalances.
+      </p>
+      <p class="about-body">
+        Matt holds an MSc in Ecological Economics from the University of Leeds, which he attended as a Marshall Scholar, and a BA in Economics and Political Science from Swarthmore College. Before Columbia, he worked as a Senior Data Scientist at Infraclear, a startup bringing transparency to global infrastructure finance.
+      </p>
+
+      <div class="tags">
+        <span class="tag">International Monetary System</span>
+        <span class="tag">Sustainable Finance</span>
+        <span class="tag">Ecological Economics</span>
+        <span class="tag">North-South Trade</span>
+        <span class="tag">Development Economics</span>
+      </div>
+
+      <br /><br />
+
+      <!-- EDUCATION inline under About -->
+      <div class="section-header">
+        <h3 class="section-label" style="font-size:1.2rem;">Education</h3>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-degree">PhD in Sustainable Development <span style="font-weight:400;font-style:italic;font-size:0.9rem;">(in progress)</span></div>
+            <div class="edu-school">Columbia University, School of International and Public Affairs</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-degree">MSc in Ecological Economics</div>
+            <div class="edu-school">University of Leeds</div>
+            <div class="edu-detail">Marshall Scholar</div>
+          </div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div>
+            <div class="edu-degree">BA in Economics & Political Science</div>
+            <div class="edu-school">Swarthmore College</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="section-header">
+        <h2 class="section-label">Publications</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <p class="pub-empty">Publications and working papers will appear here. Check back soon.</p>
+
+      <!-- Example publication (commented out — uncomment and edit to use)
+      <div class="pub-item">
+        <div class="pub-title">Title of Paper</div>
+        <div class="pub-authors">Matt Salah, Co-Author Name</div>
+        <div class="pub-venue">Journal Name, Year</div>
+        <div class="pub-links">
+          <a class="pub-link" href="#">PDF</a>
+          <a class="pub-link" href="#">Abstract</a>
+        </div>
+      </div>
+      -->
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-label">Contact</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">
+            <a href="mailto:mjs2460@columbia.edu">mjs2460@columbia.edu</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-label">Affiliation</div>
+          <div class="contact-value">
+            Department of Sustainable Development<br />
+            Columbia SIPA, New York
+          </div>
+        </div>
+      </div>
+
+      <p class="contact-note">
+        I'm happy to hear from researchers, journalists, or anyone interested in sustainable development, global finance, or ecological economics. Please reach out by email.
+      </p>
+    </section>
+
+    <footer>
+      &copy; 2026 Matt Salah &nbsp;·&nbsp; Columbia University
+    </footer>
+
+  </main>
+
+</body>
+</html>
